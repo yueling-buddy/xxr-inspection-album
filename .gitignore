@@ -6,4 +6,5 @@ app_data.json.bak_before_overall_list
 venue_order.json
 requirements.txt
 build_static.py
+redeploy_album.sh
 marks.json
