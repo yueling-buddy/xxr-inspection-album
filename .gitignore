@@ -8,3 +8,5 @@ requirements.txt
 build_static.py
 redeploy_album.sh
 marks.json
+
+*.listmeta.json
