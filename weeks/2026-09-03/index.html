@@ -13,6 +13,7 @@ body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.6 -apple-system,"
 header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 header h1{font-size:15px;margin:0;font-weight:600}
 header .stat{color:var(--sub);font-size:13px;font-weight:600}
+header .stat.rec{font-weight:400;font-size:12.5px;border-right:1px solid var(--line);padding-right:12px;white-space:nowrap}
 header input#q{border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:13px;width:220px;outline:none}
 header input#q:focus{border-color:var(--blue)}
 .flt{display:flex;gap:6px;align-items:center}
@@ -75,11 +76,12 @@ main{flex:1;padding:18px 22px 60px;min-width:0}
 </style></head><body>
 <header>
   <h1>问题项证据册</h1>
-  <span class="stat" id="stat">169 个场所 · 550 个问题项 · 943 张照片</span>
+  <span class="stat rec" id="rec">169 个场所 · 问题项总数 550 · 现场整体照片数 594 · 问题项照片数 943</span>
+  <span class="stat" id="stat">已采用 943 · 已剔除 0（共 943）</span>
   <div class="flt" id="flt">
-    <button class="fb on" data-cat="住宅区" onclick="setCat('住宅区')">住宅区<small id="cntRes"></small></button>
+    <button class="fb on" data-cat="全部" onclick="setCat('全部')">全部<small id="cntAll"></small></button>
+    <button class="fb" data-cat="住宅区" onclick="setCat('住宅区')">住宅区<small id="cntRes"></small></button>
     <button class="fb" data-cat="其他场所" onclick="setCat('其他场所')">其他场所<small id="cntOth"></small></button>
-    <button class="fb" data-cat="全部" onclick="setCat('全部')">全部</button>
   </div>
   <input id="q" placeholder="搜索场所 / 问题项编号…">
   <label class="ck"><input type="checkbox" id="onlyKeep"> 只看保留</label>
@@ -6626,8 +6628,8 @@ function closeLb(){document.getElementById('lb').classList.remove('on');}
 function step(d){if(!FLAT.length)return;cur=(cur+d+FLAT.length)%FLAT.length;openLb(cur);}
 document.addEventListener('keydown',e=>{const on=document.getElementById('lb').classList.contains('on');
   if(e.key==='Escape')closeLb(); if(!on)return; if(e.key==='ArrowLeft')step(-1); if(e.key==='ArrowRight')step(1);});
-// ---- 筛选：场所分类（住宅区/其他场所/全部）+ 关键词搜索，合并生效 ----
-let curCat='住宅区';
+// ---- 筛选：场所分类（全部/住宅区/其他场所）+ 关键词搜索，合并生效 ----
+let curCat='全部';
 function applyFilters(){
   const q=(document.getElementById('q').value||'').trim().toLowerCase();
   document.querySelectorAll('main .venue').forEach(s=>{
@@ -6646,15 +6648,15 @@ function setCat(cat){
   document.querySelectorAll('#flt .fb').forEach(b=>b.classList.toggle('on', b.dataset.cat===cat));
   applyFilters();
 }
-// 初始化：统计各类数量；住宅区为空则默认「全部」
+// 初始化：统计各类数量；默认选中「全部」
 (function(){
   const res=document.querySelectorAll('main .venue[data-cat="住宅区"]').length;
   const oth=document.querySelectorAll('main .venue[data-cat="其他场所"]').length;
-  const cr=document.getElementById('cntRes'), co=document.getElementById('cntOth');
+  const ca=document.getElementById('cntAll'), cr=document.getElementById('cntRes'), co=document.getElementById('cntOth');
+  if(ca)ca.textContent=(res+oth)?(' '+(res+oth)):'';
   if(cr)cr.textContent=res?(' '+res):'';
   if(co)co.textContent=oth?(' '+oth):'';
-  if(res===0) curCat='全部';
-  setCat(curCat);
+  setCat('全部');
 })();
 document.getElementById('q').addEventListener('input', applyFilters);
 const obs=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){
