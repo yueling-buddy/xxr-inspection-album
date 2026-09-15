@@ -22,6 +22,8 @@ main{padding:18px 22px 60px;max-width:1180px}
 .item .pid{font-weight:600;font-size:14px}
 .item .badge{background:#fef2f2;color:var(--red);border:1px solid #fecaca;border-radius:999px;padding:1px 8px;font-size:12px;font-weight:600}
 .item .desc{color:#374151;font-size:13px}
+.item .res{color:#b42318;font-size:12.5px;line-height:1.7;margin-top:6px;padding:6px 10px;background:#fff7f6;border-left:3px solid #f0a9a1;border-radius:0 4px 4px 0;word-break:break-word}
+.item .res .reslb{display:inline-block;font-weight:600;color:#fff;background:#d9534f;border-radius:3px;padding:0 6px;margin-right:7px;font-size:11px;line-height:18px;vertical-align:1px}
 .item .none{color:var(--sub);font-size:12px;padding:4px 0}
 .vinfo{margin:-6px 0 12px;padding:8px 12px;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:8px;font-size:13px;color:#334155;font-weight:600}
 .grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
@@ -55,6 +57,7 @@ footer{color:var(--sub);font-size:12px;padding:0 22px 30px;max-width:1180px}
 <div class="item">
   <div class="hd"><span class="pid">1.13</span><span class="badge">-2 分</span></div>
   <div class="desc">收集容器外壁及内桶保持干净整洁，避免陈旧性脏污，收集容器内无积水。（4分）</div>
+  <div class="res"><span class="reslb">检查结果</span>（2）收集容器外壁、内桶存在明显陈旧性脏污，大片锈迹等(-2)（1处问题）</div>
   <div class="grid">
 <figure><img loading="lazy" src="../thumb/%E7%9B%90%E7%94%B0%E5%8C%BA%E6%B7%B1%E7%9B%90%E8%B7%AF%E4%B8%8E%E9%A9%AC%E5%BA%99%E7%AD%89%E4%BA%A4%E6%B1%87%E5%A4%84_%E5%A3%B9%E6%B5%B7%E5%9F%8E/1.13_-2_1.jpg" data-big="../img/%E7%9B%90%E7%94%B0%E5%8C%BA%E6%B7%B1%E7%9B%90%E8%B7%AF%E4%B8%8E%E9%A9%AC%E5%BA%99%E7%AD%89%E4%BA%A4%E6%B1%87%E5%A4%84_%E5%A3%B9%E6%B5%B7%E5%9F%8E/1.13_-2_1.jpg" alt="整改前" data-lb="1" onclick="openLb(GAL.indexOf(this.dataset.big))"><figcaption>整改前</figcaption></figure>
 <figure><img loading="lazy" src="../thumb/%E7%9B%90%E7%94%B0%E5%8C%BA%E6%B7%B1%E7%9B%90%E8%B7%AF%E4%B8%8E%E9%A9%AC%E5%BA%99%E7%AD%89%E4%BA%A4%E6%B1%87%E5%A4%84_%E5%A3%B9%E6%B5%B7%E5%9F%8E/1.13_-2_2.jpg" data-big="../img/%E7%9B%90%E7%94%B0%E5%8C%BA%E6%B7%B1%E7%9B%90%E8%B7%AF%E4%B8%8E%E9%A9%AC%E5%BA%99%E7%AD%89%E4%BA%A4%E6%B1%87%E5%A4%84_%E5%A3%B9%E6%B5%B7%E5%9F%8E/1.13_-2_2.jpg" alt="整改后" data-lb="1" onclick="openLb(GAL.indexOf(this.dataset.big))"><figcaption>整改后</figcaption></figure>
@@ -63,7 +66,7 @@ footer{color:var(--sub);font-size:12px;padding:0 22px 30px;max-width:1180px}
 </div>
 </main>
 <div id="lb"><span class="x" onclick="closeLb()">&times;</span><span class="pv" onclick="step(-1)">&#8249;</span><img alt=""><span class="cap"></span><span class="nx" onclick="step(1)">&#8250;</span></div>
-<footer>数据源：深圳市生活垃圾分类巡查平台（2026-09-03 ~ 2026-09-09）</footer>
+<footer>数据源：深圳市生活垃圾分类巡查平台</footer>
 <script>GAL=["../img/%E7%9B%90%E7%94%B0%E5%8C%BA%E6%B7%B1%E7%9B%90%E8%B7%AF%E4%B8%8E%E9%A9%AC%E5%BA%99%E7%AD%89%E4%BA%A4%E6%B1%87%E5%A4%84_%E5%A3%B9%E6%B5%B7%E5%9F%8E/__overall__1.jpg", "../img/%E7%9B%90%E7%94%B0%E5%8C%BA%E6%B7%B1%E7%9B%90%E8%B7%AF%E4%B8%8E%E9%A9%AC%E5%BA%99%E7%AD%89%E4%BA%A4%E6%B1%87%E5%A4%84_%E5%A3%B9%E6%B5%B7%E5%9F%8E/__overall__2.jpg", "../img/%E7%9B%90%E7%94%B0%E5%8C%BA%E6%B7%B1%E7%9B%90%E8%B7%AF%E4%B8%8E%E9%A9%AC%E5%BA%99%E7%AD%89%E4%BA%A4%E6%B1%87%E5%A4%84_%E5%A3%B9%E6%B5%B7%E5%9F%8E/1.13_-2_1.jpg", "../img/%E7%9B%90%E7%94%B0%E5%8C%BA%E6%B7%B1%E7%9B%90%E8%B7%AF%E4%B8%8E%E9%A9%AC%E5%BA%99%E7%AD%89%E4%BA%A4%E6%B1%87%E5%A4%84_%E5%A3%B9%E6%B5%B7%E5%9F%8E/1.13_-2_2.jpg"];
 var GAL=[],cur=0;
 function openLb(i){cur=i;document.querySelector('#lb img').src=GAL[i];document.querySelector('#lb .cap').textContent=(i+1)+' / '+GAL.length;document.getElementById('lb').classList.add('on');}
