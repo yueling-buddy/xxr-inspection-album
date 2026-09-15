@@ -25,6 +25,8 @@ header input#q:focus{border-color:var(--blue)}
 .vinfo:empty{display:none}
 .btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer;text-decoration:none;color:var(--tx);display:inline-block}
 .btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
+.btn.xls{background:#eff6ff;border-color:#bfdbfe;color:var(--blue);font-weight:600}
+.btn.xls:hover{background:#dbeafe}
 .ck{font-size:13px;color:var(--sub);display:flex;align-items:center;gap:4px}
 .wrap{display:flex;align-items:flex-start}
 nav{width:290px;flex:0 0 290px;position:sticky;top:53px;max-height:calc(100vh - 53px);overflow:auto;background:#fff;border-right:1px solid var(--line);padding:8px}
@@ -87,7 +89,7 @@ main{flex:1;padding:18px 22px 60px;min-width:0}
   </div>
   <input id="q" placeholder="搜索场所 / 问题项编号…">
   <label class="ck"><input type="checkbox" id="onlyKeep"> 只看保留</label>
-  <a class="btn primary" href="#">导出已采用清单</a>
+<a class="btn xls" href="%E5%B7%A1%E6%9F%A5%E8%A1%A8.xlsx" download="巡查表_2026-09-10.xlsx" title="下载本周巡查表 Excel（含「检查结果明细」sheet）：巡查表_2026-09-10.xlsx">下载巡查表 Excel</a>
   <label class="btn">导入备份<input type="file" id="imp" accept="application/json" hidden></label>
 </header>
 <div class="wrap">
@@ -4620,17 +4622,8 @@ updateStat();
     if(typeof updateStat==="function")updateStat();
   }
   if(document.readyState!=="loading")applyMarks();else document.addEventListener("DOMContentLoaded",applyMarks);
-  var exp=document.querySelector("a.btn.primary");
-  if(exp){exp.addEventListener("click",function(e){
-    e.preventDefault();
-    var m=load();var rows=[["说明","照片ID","用途标签","查看图相对路径"]];
-    (typeof FLAT!=="undefined"?FLAT:[]).forEach(function(f){
-      var mk=m[f.id];if(mk&&mk.status==="drop")return;
-      rows.push([f.cap,f.id,(mk&&mk.tags?mk.tags.join("|"):""),f.v||f.t]);
-    });
-    var csv="﻿"+rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(",")}).join("\r\n");
-    var a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv;charset=utf-8"}));a.download="已采用照片清单_"+WEEK+".csv";a.click();
-  });}
+  // 2026-09-15：原「导出已采用清单」(客户端 CSV) 已随按钮一起下线 —— 用户判定用处不大，
+  // 表头位置改放「下载巡查表 Excel」（指向周目录内 巡查表.xlsx，静态文件直链下载，无需 JS）。
   var imp=document.getElementById("imp");
   if(imp){imp.addEventListener("change",function(e){
     var file=e.target.files[0];if(!file)return;
