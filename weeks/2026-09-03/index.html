@@ -27,7 +27,9 @@ header input#q:focus{border-color:var(--blue)}
 .btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
 .btn.xls{background:#eff6ff;border-color:#bfdbfe;color:var(--blue);font-weight:600}
 .btn.xls:hover{background:#dbeafe}
-.ck{font-size:13px;color:var(--sub);display:flex;align-items:center;gap:4px}
+.ck{font-size:13px;color:var(--sub);display:flex;align-items:center;gap:4px;cursor:pointer;user-select:none;white-space:nowrap}
+.ck small{font-size:11px;opacity:.7}
+.ck.on{color:var(--blue);font-weight:600}
 .wrap{display:flex;align-items:flex-start}
 nav{width:290px;flex:0 0 290px;position:sticky;top:53px;max-height:calc(100vh - 53px);overflow:auto;background:#fff;border-right:1px solid var(--line);padding:8px}
 nav a{display:block;padding:8px 10px;border-radius:8px;color:var(--tx);text-decoration:none;font-size:13px;border:1px solid transparent}
@@ -88,7 +90,8 @@ main{flex:1;padding:18px 22px 60px;min-width:0}
     <button class="fb" data-cat="其他场所" onclick="setCat('其他场所')">其他场所<small id="cntOth"></small></button>
   </div>
   <input id="q" placeholder="搜索场所 / 问题项编号…">
-  <label class="ck"><input type="checkbox" id="onlyKeep"> 只看保留</label>
+  <label class="ck" title="只显示未被剔除的照片"><input type="checkbox" id="onlyKeep"> 只看保留</label>
+  <label class="ck" title="只显示标记了「典型案例」的照片（点照片下方的标签即可标记）"><input type="checkbox" id="onlyCase" data-tag="典型案例"> 只看典型案例<small id="cntCase"></small></label>
 <a class="btn xls" href="%E5%B7%A1%E6%9F%A5%E8%A1%A8.xlsx" download="巡查表_2026-09-03.xlsx" title="下载本周巡查表 Excel（含「检查结果明细」sheet）：巡查表_2026-09-03.xlsx">下载巡查表 Excel</a>
   <label class="btn">导入备份<input type="file" id="imp" accept="application/json" hidden></label>
 </header>
@@ -7124,19 +7127,48 @@ function closeLb(){document.getElementById('lb').classList.remove('on');}
 function step(d){if(!FLAT.length)return;cur=(cur+d+FLAT.length)%FLAT.length;openLb(cur);}
 document.addEventListener('keydown',e=>{const on=document.getElementById('lb').classList.contains('on');
   if(e.key==='Escape')closeLb(); if(!on)return; if(e.key==='ArrowLeft')step(-1); if(e.key==='ArrowRight')step(1);});
-// ---- 筛选：场所分类（全部/住宅区/其他场所）+ 关键词搜索，合并生效 ----
+// ---- 筛选：场所分类（全部/住宅区/其他场所）+ 关键词搜索 + 照片标记（只看保留 / 只看典型案例），合并生效 ----
+// 2026-09-16：新增「只看典型案例」。筛选态下会连带折叠「没有可见照片」的问题项与场所，
+// 否则会出现大量空卡片（只隐藏 .ph 时场所标题还留着）。
 let curCat='全部';
+function ckOn(id){const e=document.getElementById(id);return !!(e&&e.checked);}
+function phOk(f){
+  if(ckOn('onlyKeep')&&f.classList.contains('drop'))return false;
+  const c=document.getElementById('onlyCase');
+  if(c&&c.checked){
+    const tag=c.dataset.tag||'典型案例';
+    if(!f.querySelector('.tg.on[data-tag="'+tag+'"]'))return false;
+  }
+  return true;
+}
+function photoFilterOn(){return ckOn('onlyKeep')||ckOn('onlyCase');}
 function applyFilters(){
   const q=(document.getElementById('q').value||'').trim().toLowerCase();
-  document.querySelectorAll('main .venue').forEach(s=>{
+  const active=photoFilterOn();
+  // 1) 逐张照片
+  document.querySelectorAll('main .ph').forEach(f=>{ f.style.display=phOk(f)?'':'none'; });
+  // 2) 问题项：筛选态下隐藏「所有照片都被过滤掉」以及「本就没有照片」的项
+  document.querySelectorAll('main .item').forEach(it=>{
+    const phs=it.querySelectorAll('.ph');
+    if(!phs.length){ it.style.display=active?'none':''; return; }
+    let vis=false; phs.forEach(f=>{ if(f.style.display!=='none')vis=true; });
+    it.style.display=vis?'':'none';
+  });
+  // 3) 场所卡片
+  document.querySelectorAll('main section.venue').forEach(s=>{
     const catOk=(curCat==='全部')||(s.dataset.cat===curCat);
     const qOk=!q||s.textContent.toLowerCase().includes(q);
-    s.style.display=(catOk&&qOk)?'':'none';
+    let has=false;
+    if(active){ s.querySelectorAll('.item').forEach(it=>{ if(it.style.display!=='none')has=true; }); }
+    s.style.display=(catOk&&qOk&&(!active||has))?'':'none';
   });
+  // 4) 侧栏目录同步
   document.querySelectorAll('nav a').forEach(a=>{
+    const sec=document.getElementById(a.dataset.k);
     const catOk=(curCat==='全部')||(a.dataset.cat===curCat);
     const qOk=!q||a.textContent.toLowerCase().includes(q);
-    a.style.display=(catOk&&qOk)?'':'none';
+    const secOk=!active||(sec&&sec.style.display!=='none');
+    a.style.display=(catOk&&qOk&&secOk)?'':'none';
   });
 }
 function setCat(cat){
@@ -7166,27 +7198,43 @@ function post(pid,part){
   fetch('/api/mark',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
     .then(r=>{if(!r.ok)toast('保存失败');}).catch(()=>toast('网络错误'));
 }
+function refresh(){ updateStat(); applyFilters(); }
 function setStatus(btn){
   const fig=btn.closest('.ph'); const pid=fig.dataset.pid; const st=btn.dataset.st;
   fig.classList.toggle('drop', st==='drop');
   fig.classList.toggle('keep', st!=='drop');
   fig.querySelectorAll('.b').forEach(b=>b.classList.toggle('on', b.dataset.st===st));
-  post(pid,{status:st}); updateStat(); toast(st==='drop'?'已剔除':'已保留');
+  post(pid,{status:st}); refresh(); toast(st==='drop'?'已剔除':'已保留');
 }
 function toggleTag(tg){
   const fig=tg.closest('.ph'); const pid=fig.dataset.pid;
   tg.classList.toggle('on');
   const tags=[...fig.querySelectorAll('.tg.on')].map(b=>b.dataset.tag);
-  post(pid,{tags}); toast('标签已更新');
+  post(pid,{tags}); refresh(); toast('标签已更新');
+}
+function updateTagCounts(){
+  // 表头「只看典型案例」后面的数量，随标注实时变化
+  const c=document.getElementById('onlyCase'), el=document.getElementById('cntCase');
+  if(c&&el){
+    const tag=c.dataset.tag||'典型案例';
+    el.textContent=' '+document.querySelectorAll('.ph .tg.on[data-tag="'+tag+'"]').length;
+  }
 }
 function updateStat(){
   const all=document.querySelectorAll('.ph'); let keep=0,drop=0;
   all.forEach(f=>{ if(f.classList.contains('drop'))drop++; else keep++; });
   document.getElementById('stat').textContent=`已采用 ${keep} · 已剔除 ${drop}（共 ${all.length}）`;
+  updateTagCounts();
 }
-document.getElementById('onlyKeep').addEventListener('change',e=>{
-  const on=e.target.checked;
-  document.querySelectorAll('.ph').forEach(f=>{ f.style.display = (on && f.classList.contains('drop'))?'none':''; });
+// 两个照片筛选开关（只看保留 / 只看典型案例）——统一处理，勾选时标签高亮
+// 注：label 包裹 input，点击文字浏览器已原生切换勾选，这里只监听 change，别再自己 toggle。
+['onlyKeep','onlyCase'].forEach(id=>{
+  const el=document.getElementById(id);
+  if(!el)return;
+  el.addEventListener('change',()=>{
+    const lb=el.closest('label'); if(lb)lb.classList.toggle('on', el.checked);
+    applyFilters();
+  });
 });
 document.getElementById('imp').addEventListener('change',e=>{
   const file=e.target.files[0]; if(!file)return;
