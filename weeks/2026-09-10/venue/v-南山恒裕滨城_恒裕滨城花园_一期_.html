@@ -26,10 +26,15 @@ main{padding:18px 22px 60px;max-width:1180px}
 .item .res .reslb{display:inline-block;font-weight:600;color:#fff;background:#d9534f;border-radius:3px;padding:0 6px;margin-right:7px;font-size:11px;line-height:18px;vertical-align:1px}
 .item .none{color:var(--sub);font-size:12px;padding:4px 0}
 .vinfo{margin:-6px 0 12px;padding:8px 12px;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:8px;font-size:13px;color:#334155;font-weight:600}
-.grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
-.grid figure{margin:0;width:132px}
-.grid img{width:132px;height:99px;object-fit:cover;border-radius:8px;border:1px solid var(--line);cursor:zoom-in;display:block;background:#eee}
-.grid figcaption{font-size:11px;color:var(--sub);text-align:center;margin-top:2px}
+.grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.grid figure{margin:0;width:300px}
+.grid img{width:300px;height:225px;object-fit:cover;border-radius:8px;border:1px solid var(--line);cursor:zoom-in;display:block;background:#eee}
+.grid figcaption{font-size:12px;color:var(--sub);text-align:center;margin-top:3px}
+/* 现场整体图片再大一档（350×263），与问题项照片（300×225）保持层级。
+   注意：容器内宽 1098px（main max-width:1180 - 两侧 padding），3×360+2×10 = 1100 > 1098
+   → 实测 360 宽会让整体图**每行只放 2 张**、右侧大片留白；350 则稳稳 3 张/行。 */
+.grid.ovgrid figure{width:350px}
+.grid.ovgrid img{width:350px;height:263px}
 .tag{display:inline-block;background:var(--chip);color:var(--sub);border-radius:6px;padding:0 6px;font-size:11px;margin-left:6px}
 #lb{position:fixed;inset:0;background:rgba(17,20,24,.92);display:none;z-index:100;align-items:center;justify-content:center}
 #lb.on{display:flex}
@@ -48,7 +53,7 @@ footer{color:var(--sub);font-size:12px;padding:0 22px 30px;max-width:1180px}
   <a class="back" href="../index.html">&larr; 全部场所</a>
 </header>
 <main>
-<div class="sec"><p class="st">现场整体图片<span class="n">7 张</span></p><div class="grid">
+<div class="sec"><p class="st">现场整体图片<span class="n">7 张</span></p><div class="grid ovgrid">
 <figure><img loading="lazy" src="../thumb/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/__overall__1.jpg" data-big="../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/__overall__1.jpg" alt="现场整体图片1" onclick="openLb(GAL.indexOf(this.dataset.big))"><figcaption>现场整体图片1</figcaption></figure>
 <figure><img loading="lazy" src="../thumb/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/__overall__2.jpg" data-big="../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/__overall__2.jpg" alt="现场整体图片2" onclick="openLb(GAL.indexOf(this.dataset.big))"><figcaption>现场整体图片2</figcaption></figure>
 <figure><img loading="lazy" src="../thumb/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/__overall__3.jpg" data-big="../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/__overall__3.jpg" alt="现场整体图片3" onclick="openLb(GAL.indexOf(this.dataset.big))"><figcaption>现场整体图片3</figcaption></figure>
@@ -108,7 +113,7 @@ footer{color:var(--sub);font-size:12px;padding:0 22px 30px;max-width:1180px}
 </div>
 </main>
 <div id="lb"><span class="x" onclick="closeLb()">&times;</span><span class="pv" onclick="step(-1)">&#8249;</span><img alt=""><span class="cap"></span><span class="nx" onclick="step(1)">&#8250;</span></div>
-<footer>数据源：深圳市生活垃圾分类巡查平台</footer>
+<footer>数据源：深圳市生活垃圾分类巡查平台（2026-09-10 ~ 2026-09-16）</footer>
 <script>GAL=["../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/__overall__1.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/__overall__2.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/__overall__3.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/__overall__4.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/__overall__5.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/__overall__6.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/__overall__7.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/1.5_-4_1.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/1.5_-4_2.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/1.5_-4_3.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/1.5_-4_4.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/1.9_-2_1.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/1.9_-2_2.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/2.4_-2_1.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/2.4_-2_2.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/5.2_-1_1.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/5.5_-2_1.jpg", "../img/%E5%8D%97%E5%B1%B1%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E_%E6%81%92%E8%A3%95%E6%BB%A8%E5%9F%8E%E8%8A%B1%E5%9B%AD%EF%BC%88%E4%B8%80%E6%9C%9F%EF%BC%89/5.5_-2_2.jpg"];
 var GAL=[],cur=0;
 function openLb(i){cur=i;document.querySelector('#lb img').src=GAL[i];document.querySelector('#lb .cap').textContent=(i+1)+' / '+GAL.length;document.getElementById('lb').classList.add('on');}
