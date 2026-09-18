@@ -6817,9 +6817,38 @@ document.getElementById('q').addEventListener('input', applyFilters);
     nv.scrollTop+=e.deltaY*(e.deltaMode===1?33:1);         // 行滚动模式换算成像素
   },{passive:false});
 })();
-const obs=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){
-  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.k===en.target.id));}});},{rootMargin:'-60px 0px -70% 0px'});
-document.querySelectorAll('section.venue').forEach(s=>obs.observe(s));
+// ---- 侧栏高亮（2026-09-18 重写）----
+// 旧逻辑：哪个场所触发相交事件就点亮哪个（同一批回调里「最后触发」的覆盖前者），
+// 点击锚点跳转后高亮常停留在相邻场所（如点了马坑、高亮留在南澳湾花园）。
+// 新逻辑：
+//  1) 点击侧栏链接 → 立即点亮目标并加 800ms 锁，跳转途中观察回调不抢高亮；
+//  2) 观察回调改为「可视带内最靠顶的相交场所」才点亮；
+//  3) rootMargin 顶部偏移用 --hh 实时计算（头部加高后 -60px 旧值已失真）；
+//  4) 窗口缩放 → 头部换行数变化 → 重建 observer 使 rootMargin 跟随。
+let navLockUntil=0;
+function markNav(id){
+  document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.k===id));
+}
+let obs=null;
+function buildNavObs(){
+  if(obs)obs.disconnect();
+  const m=document.documentElement;
+  const hh=parseFloat(getComputedStyle(m).getPropertyValue('--hh'))||56;
+  obs=new IntersectionObserver(es=>{
+    if(Date.now()<navLockUntil)return;
+    let best=null;
+    es.forEach(en=>{
+      if(en.isIntersecting&&(best===null||en.boundingClientRect.top<best.boundingClientRect.top))best=en;
+    });
+    if(best)markNav(best.target.id);
+  },{rootMargin:'-'+Math.round(hh+10)+'px 0px -70% 0px'});
+  document.querySelectorAll('section.venue').forEach(s=>obs.observe(s));
+}
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>{
+  markNav(a.dataset.k); navLockUntil=Date.now()+800;
+}));
+buildNavObs();
+window.addEventListener('resize',buildNavObs);
 
 // ---- 标注交互 ----
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1200);}
