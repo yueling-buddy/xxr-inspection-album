@@ -37,7 +37,7 @@ header{flex-wrap:wrap}
 .ck small{font-size:11px;opacity:.7}
 .ck.on{color:var(--blue);font-weight:600}
 .wrap{display:flex;align-items:flex-start}
-nav{width:290px;flex:0 0 290px;position:sticky;top:var(--hh);max-height:calc(100vh - var(--hh));overflow:auto;background:#fff;border-right:1px solid var(--line);padding:8px}
+nav{width:290px;flex:0 0 290px;position:sticky;top:var(--hh);max-height:calc(100vh - var(--hh));overflow:auto;background:#fff;border-right:1px solid var(--line);padding:8px;overscroll-behavior:contain}
 nav a{display:block;padding:8px 10px;border-radius:8px;color:var(--tx);text-decoration:none;font-size:13px;border:1px solid transparent}
 nav a:hover{background:var(--chip)}
 nav a.on{background:#eff6ff;border-color:#bfdbfe;color:var(--blue)}
@@ -7252,6 +7252,21 @@ document.getElementById('q').addEventListener('input', applyFilters);
   window.addEventListener('resize',syncH);
   window.addEventListener('load',syncH);
   syncH();
+})();
+// ---- 2026-09-18：鼠标悬停侧栏时，滚轮只滚侧栏（滚动链修复）----
+// 现象：悬停左侧目录滚动时，侧栏到边界后滚轮事件「穿透」给页面 → 右栏反而滚动，
+// 且侧栏顶部内容被推到吸顶头部之下看不见。修法：nav 上拦截 wheel 并 preventDefault，
+// 滚轮增量直接作用于 nav.scrollTop；侧栏无溢出（内容不满一屏）时放行给页面。
+// CSS 兜底 overscroll-behavior:contain（触控板/滚动条拖拽同样不链到页面）。
+(function(){
+  const nv=document.querySelector('nav');
+  nv.addEventListener('wheel',function(e){
+    if(e.ctrlKey)return;                                   // Ctrl+滚轮 = 缩放，不拦
+    const max=nv.scrollHeight-nv.clientHeight;
+    if(max<=0)return;                                      // 侧栏无溢出 → 交给页面
+    e.preventDefault();
+    nv.scrollTop+=e.deltaY*(e.deltaMode===1?33:1);         // 行滚动模式换算成像素
+  },{passive:false});
 })();
 const obs=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){
   document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.dataset.k===en.target.id));}});},{rootMargin:'-60px 0px -70% 0px'});
