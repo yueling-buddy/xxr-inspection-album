@@ -112,6 +112,7 @@ nav .navday small{font-weight:400}
   <label class="ck" title="只显示标记了「典型案例」的照片（点照片下方的标签即可标记）"><input type="checkbox" id="onlyCase" data-tag="典型案例"> 只看典型案例<small id="cntCase"></small></label>
 <a class="btn xls" href="%E5%B7%A1%E6%9F%A5%E8%A1%A8.xlsx" download="巡查表_2026-09-10.xlsx" title="下载本周巡查表 Excel（含「检查结果明细」sheet）：巡查表_2026-09-10.xlsx">下载巡查表 Excel</a>
   <label class="btn">导入备份<input type="file" id="imp" accept="application/json" hidden></label>
+  <label class="btn" onclick="exportMarks()" title="把本页所有标注（保留/剔除 + 标签）下载为 JSON 备份文件">导出标注</label>
 </header>
 <div class="wrap">
   <nav><div class="navday" data-day="2026-09-10">09-10（周四）<small>31 家</small></div>
@@ -6851,11 +6852,40 @@ buildNavObs();
 window.addEventListener('resize',buildNavObs);
 
 // ---- 标注交互 ----
+// 持久化双通道（2026-09-20）：本地预览走 /api/mark 写 marks.json；
+// 公网静态站无后端 → fetch 失败时兜底写入 localStorage（按页面路径分周命名），
+// 并提供「导出标注」下载 JSON、import_marks.py 合并回 marks.json 供发布管线读取。
+const LS_KEY='xxr_marks_'+location.pathname;
+function loadLS(){try{return JSON.parse(localStorage.getItem(LS_KEY)||'{}')}catch(e){return{}}}
+function saveLS(pid,part){try{const m=loadLS();m[pid]=Object.assign(m[pid]||{},part);localStorage.setItem(LS_KEY,JSON.stringify(m));return true}catch(e){return false}}
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),1200);}
 function post(pid,part){
   const body=Object.assign({id:pid},part);
   fetch('/api/mark',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
-    .then(r=>{if(!r.ok)toast('保存失败');}).catch(()=>toast('网络错误'));
+    .then(r=>{if(!r.ok){saveLS(pid,part);toast('已保存在本浏览器');}})
+    .catch(()=>{saveLS(pid,part);toast('已保存在本浏览器');});
+}
+// 页面加载时：把 localStorage 里的标注叠加到渲染结果（静态站兜底通道的回显）
+(function(){const m=loadLS();if(!Object.keys(m).length)return;
+  document.querySelectorAll('figure.ph').forEach(fig=>{
+    const st=m[fig.dataset.pid];if(!st)return;
+    if(st.status){fig.classList.toggle('drop',st.status==='drop');fig.classList.toggle('keep',st.status!=='drop');
+      fig.querySelectorAll('.b').forEach(b=>b.classList.toggle('on',b.dataset.st===st.status));}
+    if(st.tags)fig.querySelectorAll('.tg').forEach(b=>b.classList.toggle('on',st.tags.includes(b.dataset.tag)));
+  });
+})();
+function exportMarks(){
+  const m={};
+  document.querySelectorAll('figure.ph').forEach(fig=>{
+    m[fig.dataset.pid]={status:fig.classList.contains('drop')?'drop':'keep',
+      tags:[...fig.querySelectorAll('.tg.on')].map(b=>b.dataset.tag)};
+  });
+  const wk=(location.pathname.split('weeks/')[1]||'').split('/')[0]||'local';
+  const name='marks_export_'+wk+'.json';
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([JSON.stringify({__export__:name,savedAt:new Date().toISOString(),marks:m},null,1)],{type:'application/json'}));
+  a.download=name;a.click();URL.revokeObjectURL(a.href);
+  toast('已导出 '+Object.keys(m).length+' 条标注');
 }
 function refresh(){ updateStat(); applyFilters(); }
 function setStatus(btn){
@@ -6898,8 +6928,21 @@ function updateStat(){
 document.getElementById('imp').addEventListener('change',e=>{
   const file=e.target.files[0]; if(!file)return;
   const rd=new FileReader();
-  rd.onload=()=>{ fetch('/api/import',{method:'POST',headers:{'Content-Type':'application/json'},body:rd.result})
-    .then(r=>r.ok?location.reload():toast('导入失败')); };
+  rd.onload=()=>{ const body=rd.result;
+    let parsed=null;
+    try{parsed=JSON.parse(body);}catch(err){}
+    const marks=parsed?(parsed.marks||parsed):null;  // 兼容导出格式与原始 marks 格式
+    const mergeLS=()=>{ if(!marks)return false;
+      const cur=loadLS();
+      for(const pid in marks){ if(pid.startsWith('_'))continue;
+        cur[pid]=Object.assign(cur[pid]||{},marks[pid]); }
+      localStorage.setItem(LS_KEY,JSON.stringify(cur)); return true; };
+    const done=r=>{ if(r.ok){location.reload();}
+      else if(mergeLS()){location.reload();}
+      else toast('导入失败'); };
+    fetch('/api/import',{method:'POST',headers:{'Content-Type':'application/json'},body:body})
+      .then(done).catch(()=>{ if(mergeLS())location.reload(); else toast('导入失败'); });
+  };
   rd.readAsText(file);
 });
 updateStat();
