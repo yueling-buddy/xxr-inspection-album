@@ -2860,6 +2860,26 @@
     "file": "__overall__2.jpg",
     "label": "现场整体图片2",
     "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\金鹏社区金洲路棚改服务中心2栋_观山嘉苑\\__overall__2.jpg"
+   },
+   {
+    "file": "__overall__3.jpg",
+    "label": "现场整体图片3",
+    "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\金鹏社区金洲路棚改服务中心2栋_观山嘉苑\\__overall__3.jpg"
+   },
+   {
+    "file": "__overall__4.jpg",
+    "label": "现场整体图片4",
+    "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\金鹏社区金洲路棚改服务中心2栋_观山嘉苑\\__overall__4.jpg"
+   },
+   {
+    "file": "__overall__5.jpg",
+    "label": "现场整体图片5",
+    "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\金鹏社区金洲路棚改服务中心2栋_观山嘉苑\\__overall__5.jpg"
+   },
+   {
+    "file": "__overall__6.jpg",
+    "label": "现场整体图片6",
+    "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\金鹏社区金洲路棚改服务中心2栋_观山嘉苑\\__overall__6.jpg"
    }
   ],
   "insp_date": "2026-09-22"
@@ -4987,17 +5007,17 @@
    {
     "id": "1.5",
     "desc": "至少设置一处有害垃圾收集容器。（5分）",
-    "score": "5",
+    "score": "-5",
     "reason": "（2）收集容器缺失(5)（1处问题）",
     "photos": [
-     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\福田区农园路66-13号_农园社区党群服务中心\\1.5_5_1.jpg"
+     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\福田区农园路66-13号_农园社区党群服务中心\\1.5_-5_1.jpg"
     ],
     "photo_checked": true,
     "photos_meta": [
      {
-      "file": "1.5_5_1.jpg",
+      "file": "1.5_-5_1.jpg",
       "label": "整改前",
-      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\福田区农园路66-13号_农园社区党群服务中心\\1.5_5_1.jpg"
+      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\福田区农园路66-13号_农园社区党群服务中心\\1.5_-5_1.jpg"
      }
     ]
    }
@@ -7478,6 +7498,11 @@
     "file": "__overall__3.jpg",
     "label": "现场整体图片3",
     "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\广东省深圳市龙岗区坪地街道屯梓圩新村_屯圩村\\__overall__3.jpg"
+   },
+   {
+    "file": "__overall__4.jpg",
+    "label": "现场整体图片4",
+    "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\广东省深圳市龙岗区坪地街道屯梓圩新村_屯圩村\\__overall__4.jpg"
    }
   ],
   "insp_date": "2026-09-20"
@@ -8091,6 +8116,11 @@
     "file": "__overall__2.jpg",
     "label": "现场整体图片2",
     "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\罗湖区清平路13号_深勘宿舍\\__overall__2.jpg"
+   },
+   {
+    "file": "__overall__3.jpg",
+    "label": "现场整体图片3",
+    "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\罗湖区清平路13号_深勘宿舍\\__overall__3.jpg"
    }
   ],
   "insp_date": "2026-09-20"
@@ -8316,45 +8346,109 @@
     "desc": "转运桶应在黄线划定区域内摆放整齐并保持全天关闭（作业状态除外），禁止罩外摆桶供居民投放。（6分）",
     "score": "-6",
     "reason": "（2）未在黄线划定区域内(-2)（1处问题）； （3）监控范围外罩外摆桶并开盖供居民投放(-2)（2处问题）",
-    "photos": [],
+    "photos": [
+     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\1.17_-6_1.jpg",
+     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\1.17_-6_2.jpg",
+     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\1.17_-6_3.jpg",
+     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\1.17_-6_4.jpg",
+     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\1.17_-6_5.jpg"
+    ],
     "photo_checked": true,
-    "photos_meta": []
+    "photos_meta": [
+     {
+      "file": "1.17_-6_1.jpg",
+      "label": "整改前",
+      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\1.17_-6_1.jpg"
+     },
+     {
+      "file": "1.17_-6_2.jpg",
+      "label": "整改前",
+      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\1.17_-6_2.jpg"
+     },
+     {
+      "file": "1.17_-6_3.jpg",
+      "label": "整改前",
+      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\1.17_-6_3.jpg"
+     },
+     {
+      "file": "1.17_-6_4.jpg",
+      "label": "整改前",
+      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\1.17_-6_4.jpg"
+     },
+     {
+      "file": "1.17_-6_5.jpg",
+      "label": "整改前",
+      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\1.17_-6_5.jpg"
+     }
+    ]
    },
    {
     "id": "2.1",
     "desc": "设置标识牌，外观使用“深i回收”标识，封闭围挡，地面硬底化。（2分）",
     "score": "-2",
     "reason": "（5）其他问题说明（备注描述）(-2)（1处问题）",
-    "photos": [],
+    "photos": [
+     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\2.1_-2_1.jpg"
+    ],
     "photo_checked": true,
-    "photos_meta": []
+    "photos_meta": [
+     {
+      "file": "2.1_-2_1.jpg",
+      "label": "整改前",
+      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\2.1_-2_1.jpg"
+     }
+    ]
    },
    {
     "id": "2.2",
     "desc": "设置消防设施，使用功能正常，取用方便。（2分）",
     "score": "-2",
     "reason": "（2）消防设施不规范（设备缺失、破损严重/过期等）(-2)（1处问题）",
-    "photos": [],
+    "photos": [
+     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\2.2_-2_1.jpg"
+    ],
     "photo_checked": true,
-    "photos_meta": []
+    "photos_meta": [
+     {
+      "file": "2.2_-2_1.jpg",
+      "label": "整改前",
+      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\2.2_-2_1.jpg"
+     }
+    ]
    },
    {
     "id": "2.4",
     "desc": "暂存点及其周围环境干净整洁，没有污水积聚或散落垃圾，禁止存放易燃易爆危险品，禁止违规接电、住人。（2分）",
     "score": "-2",
     "reason": "（2）暂存点及周围环境不整洁（垃圾堆放杂乱、垃圾散落、地面污水积聚等）(-2)（1处问题）",
-    "photos": [],
+    "photos": [
+     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\2.4_-2_1.jpg"
+    ],
     "photo_checked": true,
-    "photos_meta": []
+    "photos_meta": [
+     {
+      "file": "2.4_-2_1.jpg",
+      "label": "整改前",
+      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\2.4_-2_1.jpg"
+     }
+    ]
    },
    {
     "id": "4.2",
     "desc": "设备应具备支付、称重、满溢提示、安全防夹等功能。（1分）",
     "score": "-1",
     "reason": "（1）无问题； （2）没有具备支付、称重、满溢提示、安全防夹等功能(-1)（1处问题）",
-    "photos": [],
+    "photos": [
+     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\4.2_-1_1.jpg"
+    ],
     "photo_checked": true,
-    "photos_meta": []
+    "photos_meta": [
+     {
+      "file": "4.2_-1_1.jpg",
+      "label": "整改前",
+      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳松坪村三期_松坪村三期\\4.2_-1_1.jpg"
+     }
+    ]
    }
   ],
   "overall": [
@@ -11926,6 +12020,11 @@
     "file": "__overall__2.jpg",
     "label": "现场整体图片2",
     "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳市宝安区华夏路双龙花园_双龙花园\\__overall__2.jpg"
+   },
+   {
+    "file": "__overall__3.jpg",
+    "label": "现场整体图片3",
+    "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\深圳市宝安区华夏路双龙花园_双龙花园\\__overall__3.jpg"
    }
   ],
   "insp_date": "2026-09-18"
@@ -14229,9 +14328,17 @@
     "desc": "回收箱及周边环境干净整洁，无垃圾满溢、暴露垃圾或杂物堆放等问题。（2分）",
     "score": "-2",
     "reason": "周边环境脏乱(-2)（1处问题）",
-    "photos": [],
+    "photos": [
+     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\广东省深圳市罗湖区黄贝街道京广中心京基东方都会_京基东方都会\\5.5_-2_1.jpg"
+    ],
     "photo_checked": true,
-    "photos_meta": []
+    "photos_meta": [
+     {
+      "file": "5.5_-2_1.jpg",
+      "label": "整改前",
+      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\广东省深圳市罗湖区黄贝街道京广中心京基东方都会_京基东方都会\\5.5_-2_1.jpg"
+     }
+    ]
    }
   ],
   "overall": [
@@ -14239,6 +14346,16 @@
     "file": "__overall__1.jpg",
     "label": "现场整体图片1",
     "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\广东省深圳市罗湖区黄贝街道京广中心京基东方都会_京基东方都会\\__overall__1.jpg"
+   },
+   {
+    "file": "__overall__2.jpg",
+    "label": "现场整体图片2",
+    "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\广东省深圳市罗湖区黄贝街道京广中心京基东方都会_京基东方都会\\__overall__2.jpg"
+   },
+   {
+    "file": "__overall__3.jpg",
+    "label": "现场整体图片3",
+    "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\广东省深圳市罗湖区黄贝街道京广中心京基东方都会_京基东方都会\\__overall__3.jpg"
    }
   ],
   "insp_date": "2026-09-17"
@@ -15957,17 +16074,17 @@
    {
     "id": "1.5",
     "desc": "至少设置一处有害垃圾收集容器。（5分）",
-    "score": "5",
+    "score": "-5",
     "reason": "（2）收集容器缺失(5)（1处问题）",
     "photos": [
-     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\广东省深圳市南山区粤海街道铜鼓社区党群服务中心华润城润府3期_铜鼓社区党群服务中心\\1.5_5_1.jpg"
+     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\广东省深圳市南山区粤海街道铜鼓社区党群服务中心华润城润府3期_铜鼓社区党群服务中心\\1.5_-5_1.jpg"
     ],
     "photo_checked": true,
     "photos_meta": [
      {
-      "file": "1.5_5_1.jpg",
+      "file": "1.5_-5_1.jpg",
       "label": "整改前",
-      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\广东省深圳市南山区粤海街道铜鼓社区党群服务中心华润城润府3期_铜鼓社区党群服务中心\\1.5_5_1.jpg"
+      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\广东省深圳市南山区粤海街道铜鼓社区党群服务中心华润城润府3期_铜鼓社区党群服务中心\\1.5_-5_1.jpg"
      }
     ]
    },
@@ -16675,18 +16792,40 @@
     "desc": "禁止通过捆绑、卡挡或上锁等方式封闭或遮挡投放口。（4分）",
     "score": "-2",
     "reason": "（4）误时投放点未开放(-2)（1处问题）",
-    "photos": [],
+    "photos": [
+     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\梅坳三路2号_建龙苑\\1.16_-2_1.jpg"
+    ],
     "photo_checked": true,
-    "photos_meta": []
+    "photos_meta": [
+     {
+      "file": "1.16_-2_1.jpg",
+      "label": "整改前",
+      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\梅坳三路2号_建龙苑\\1.16_-2_1.jpg"
+     }
+    ]
    },
    {
     "id": "2.1",
     "desc": "设置标识牌，外观使用“深i回收”标识，封闭围挡，地面硬底化。（2分）",
     "score": "-2",
     "reason": "（5）其他问题说明（备注描述）(-2)（1处问题）",
-    "photos": [],
+    "photos": [
+     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\梅坳三路2号_建龙苑\\2.1_-2_1.jpg",
+     "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\梅坳三路2号_建龙苑\\2.1_-2_2.jpg"
+    ],
     "photo_checked": true,
-    "photos_meta": []
+    "photos_meta": [
+     {
+      "file": "2.1_-2_1.jpg",
+      "label": "整改前",
+      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\梅坳三路2号_建龙苑\\2.1_-2_1.jpg"
+     },
+     {
+      "file": "2.1_-2_2.jpg",
+      "label": "整改前",
+      "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\梅坳三路2号_建龙苑\\2.1_-2_2.jpg"
+     }
+    ]
    }
   ],
   "overall": [
@@ -16694,6 +16833,26 @@
     "file": "__overall__1.jpg",
     "label": "现场整体图片1",
     "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\梅坳三路2号_建龙苑\\__overall__1.jpg"
+   },
+   {
+    "file": "__overall__2.jpg",
+    "label": "现场整体图片2",
+    "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\梅坳三路2号_建龙苑\\__overall__2.jpg"
+   },
+   {
+    "file": "__overall__3.jpg",
+    "label": "现场整体图片3",
+    "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\梅坳三路2号_建龙苑\\__overall__3.jpg"
+   },
+   {
+    "file": "__overall__4.jpg",
+    "label": "现场整体图片4",
+    "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\梅坳三路2号_建龙苑\\__overall__4.jpg"
+   },
+   {
+    "file": "__overall__5.jpg",
+    "label": "现场整体图片5",
+    "path": "D:/Workbuddy/xxr数据处理/photos_2026-09-17\\梅坳三路2号_建龙苑\\__overall__5.jpg"
    }
   ],
   "insp_date": "2026-09-17"
