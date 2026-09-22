@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>同富苑 · 证据</title>
+<style>
+:root{--bg:#f6f7f9;--panel:#fff;--line:#e5e7eb;--tx:#1f2328;--sub:#6b7280;--red:#d92d20;--blue:#2563eb;--chip:#f3f4f6;--green:#087443}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:14px/1.6 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif}
+header{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);padding:12px 20px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+header h1{font-size:16px;margin:0;font-weight:600}
+header .addr{color:var(--sub);font-size:13px}
+header .stat{color:var(--sub);font-size:13px}
+header a.back{margin-left:auto;color:var(--blue);text-decoration:none;font-size:13px;border:1px solid var(--line);border-radius:8px;padding:5px 12px}
+header a.back:hover{background:var(--chip)}
+main{padding:18px 22px 60px;max-width:1180px}
+.sec{background:var(--panel);border:1px solid var(--line);border-radius:12px;margin-bottom:14px;padding:14px 18px}
+.sec>.st{font-weight:600;font-size:14px;margin:0 0 8px}
+.sec>.st .n{color:var(--sub);font-weight:400;font-size:12px;margin-left:6px}
+.item{border-top:1px dashed var(--line);padding:10px 0 4px}
+.item:first-of-type{border-top:0}
+.item .hd{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.item .pid{font-weight:600;font-size:14px}
+.item .badge{background:#fef2f2;color:var(--red);border:1px solid #fecaca;border-radius:999px;padding:1px 8px;font-size:12px;font-weight:600}
+.item .desc{color:#374151;font-size:13px}
+.item .res{color:#b42318;font-size:12.5px;line-height:1.7;margin-top:6px;padding:6px 10px;background:#fff7f6;border-left:3px solid #f0a9a1;border-radius:0 4px 4px 0;word-break:break-word}
+.item .res .reslb{display:inline-block;font-weight:600;color:#fff;background:#d9534f;border-radius:3px;padding:0 6px;margin-right:7px;font-size:11px;line-height:18px;vertical-align:1px}
+.item .none{color:var(--sub);font-size:12px;padding:4px 0}
+.vinfo{margin:-6px 0 12px;padding:8px 12px;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:8px;font-size:13px;color:#334155;font-weight:600}
+.grid{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;align-items:flex-start}
+/* 2026-09-16：照片一律**完整显示**（原 width:300px;height:225px + object-fit:cover 会把竖版照片
+   裁掉约 44% —— 平台照片竖版（thumb 240×320）/ 横版（320×240）各占一半，用户报「只能看到一部分」）。
+   改为「长边不超过 300 + 不设固定宽高」：竖版自然排成 225×300、横版 300×225，零裁剪，卡片宽度仍 300。 */
+.grid figure{margin:0;width:300px;text-align:center}
+.grid img{max-width:300px;max-height:300px;width:auto;height:auto;border-radius:8px;border:1px solid var(--line);cursor:zoom-in;display:block;background:#eee;margin:0 auto}
+.grid figcaption{font-size:12px;color:var(--sub);text-align:center;margin-top:3px}
+/* 现场整体图片再大一档（长边 350），与问题项照片（长边 300）保持层级。
+   注意：容器内宽 1098px（main max-width:1180 - 两侧 padding），3×350+2×10 = 1070 ≤ 1098 ✅；
+   而 3×360+2×10 = 1100 > 1098 → 实测 360 宽会让整体图**每行只放 2 张**、右侧大片留白。 */
+.grid.ovgrid figure{width:350px}
+.grid.ovgrid img{max-width:350px;max-height:350px;width:auto;height:auto}
+.tag{display:inline-block;background:var(--chip);color:var(--sub);border-radius:6px;padding:0 6px;font-size:11px;margin-left:6px}
+/* 2026-09-16：灯箱改 flex 纵向布局（图片 + 图注顺排），图片可放大到 calc(100vh-96px)（≈89vh），
+   图注不再绝对定位压图下方 —— 矮窗口也不会图文重叠。与周页 app.py 保持一致。 */
+#lb{position:fixed;inset:0;background:rgba(17,20,24,.92);display:none;z-index:100;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:40px 24px 24px}
+#lb.on{display:flex}
+#lb img{max-width:96vw;max-height:calc(100vh - 96px);border-radius:6px}
+#lb .cap{color:#e5e7eb;font-size:13px;text-align:center}
+#lb .x{position:absolute;top:14px;right:20px;color:#fff;font-size:30px;cursor:pointer;line-height:1}
+#lb .pv,#lb .nx{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:40px;cursor:pointer;padding:0 18px;user-select:none;opacity:.8}
+#lb .pv{left:0}#lb .nx{right:0}
+#lb .pv:hover,#lb .nx:hover{opacity:1}
+footer{color:var(--sub);font-size:12px;padding:0 22px 30px;max-width:1180px}
+</style></head><body>
+<header>
+  <h1>同富苑</h1>
+  <span class="addr">深圳市宝安区大兴一路9号同富苑</span>
+  <span class="stat">现场整体图 6 · 问题项 3 · 问题照片 5</span>
+  <a class="back" href="../index.html">&larr; 全部场所</a>
+</header>
+<main>
+<div class="sec"><p class="st">现场整体图片<span class="n">6 张</span></p><div class="grid ovgrid">
+<figure><img loading="lazy" src="../thumb/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__1.jpg" data-big="../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__1.jpg" alt="现场整体图片1" onclick="openLb(GAL.indexOf(this.dataset.big))"><figcaption>现场整体图片1</figcaption></figure>
+<figure><img loading="lazy" src="../thumb/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__2.jpg" data-big="../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__2.jpg" alt="现场整体图片2" onclick="openLb(GAL.indexOf(this.dataset.big))"><figcaption>现场整体图片2</figcaption></figure>
+<figure><img loading="lazy" src="../thumb/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__3.jpg" data-big="../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__3.jpg" alt="现场整体图片3" onclick="openLb(GAL.indexOf(this.dataset.big))"><figcaption>现场整体图片3</figcaption></figure>
+<figure><img loading="lazy" src="../thumb/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__4.jpg" data-big="../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__4.jpg" alt="现场整体图片4" onclick="openLb(GAL.indexOf(this.dataset.big))"><figcaption>现场整体图片4</figcaption></figure>
+<figure><img loading="lazy" src="../thumb/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__5.jpg" data-big="../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__5.jpg" alt="现场整体图片5" onclick="openLb(GAL.indexOf(this.dataset.big))"><figcaption>现场整体图片5</figcaption></figure>
+<figure><img loading="lazy" src="../thumb/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__6.jpg" data-big="../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__6.jpg" alt="现场整体图片6" onclick="openLb(GAL.indexOf(this.dataset.big))"><figcaption>现场整体图片6</figcaption></figure>
+</div></div>
+<div class="vinfo">投放点数量：1 · 场所类型：住宅小区</div>
+<div class="sec"><p class="st">问题项证据<span class="n">3 项</span></p>
+<div class="item">
+  <div class="hd"><span class="pid">1.9</span><span class="badge">-2 分</span></div>
+  <div class="desc">各设施齐全完好，摆放整齐有序，使用功能正常，没有严重破损、陈旧问题，不得拆除投放口盖板支撑杆。（6分）</div>
+  <div class="res"><span class="reslb">检查结果</span>（3）内桶错放导致桶盖无法正常打开，未放置垃圾内桶等影响正常使用(-2)（1处问题）</div>
+  <div class="grid">
+<figure><img loading="lazy" src="../thumb/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/1.9_-2_1.jpg" data-big="../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/1.9_-2_1.jpg" alt="整改前" data-lb="1" onclick="openLb(GAL.indexOf(this.dataset.big))"><figcaption>整改前</figcaption></figure>
+  </div>
+</div>
+<div class="item">
+  <div class="hd"><span class="pid">1.13</span><span class="badge">-2 分</span></div>
+  <div class="desc">收集容器外壁及内桶保持干净整洁，避免陈旧性脏污，收集容器内无积水。（4分）</div>
+  <div class="res"><span class="reslb">检查结果</span>（2）收集容器外壁、内桶存在明显陈旧性脏污，大片锈迹等(-2)（1处问题）</div>
+  <div class="grid">
+<figure><img loading="lazy" src="../thumb/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/1.13_-2_1.jpg" data-big="../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/1.13_-2_1.jpg" alt="整改前" data-lb="1" onclick="openLb(GAL.indexOf(this.dataset.big))"><figcaption>整改前</figcaption></figure>
+<figure><img loading="lazy" src="../thumb/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/1.13_-2_2.jpg" data-big="../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/1.13_-2_2.jpg" alt="整改前" data-lb="1" onclick="openLb(GAL.indexOf(this.dataset.big))"><figcaption>整改前</figcaption></figure>
+<figure><img loading="lazy" src="../thumb/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/1.13_-2_3.jpg" data-big="../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/1.13_-2_3.jpg" alt="整改前" data-lb="1" onclick="openLb(GAL.indexOf(this.dataset.big))"><figcaption>整改前</figcaption></figure>
+  </div>
+</div>
+<div class="item">
+  <div class="hd"><span class="pid">2.1</span><span class="badge">-2 分</span></div>
+  <div class="desc">设置标识牌，外观使用“深i回收”标识，封闭围挡，地面硬底化。（2分）</div>
+  <div class="res"><span class="reslb">检查结果</span>（3）无标识牌，或标识牌被遮挡、模糊/脱落/未更新等(-2)（1处问题）</div>
+  <div class="grid">
+<figure><img loading="lazy" src="../thumb/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/2.1_-2_1.jpg" data-big="../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/2.1_-2_1.jpg" alt="整改前" data-lb="1" onclick="openLb(GAL.indexOf(this.dataset.big))"><figcaption>整改前</figcaption></figure>
+  </div>
+</div>
+</div>
+</main>
+<div id="lb"><span class="x" onclick="closeLb()">&times;</span><span class="pv" onclick="step(-1)">&#8249;</span><img alt=""><span class="cap"></span><span class="nx" onclick="step(1)">&#8250;</span></div>
+<footer>数据源：深圳市生活垃圾分类巡查平台（2026-09-17 ~ 2026-09-23）</footer>
+<script>GAL=["../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__1.jpg", "../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__2.jpg", "../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__3.jpg", "../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__4.jpg", "../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__5.jpg", "../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/__overall__6.jpg", "../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/1.9_-2_1.jpg", "../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/1.13_-2_1.jpg", "../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/1.13_-2_2.jpg", "../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/1.13_-2_3.jpg", "../img/%E6%B7%B1%E5%9C%B3%E5%B8%82%E5%AE%9D%E5%AE%89%E5%8C%BA%E5%A4%A7%E5%85%B4%E4%B8%80%E8%B7%AF9%E5%8F%B7%E5%90%8C%E5%AF%8C%E8%8B%91_%E5%90%8C%E5%AF%8C%E8%8B%91/2.1_-2_1.jpg"];
+var cur=0;
+function openLb(i){cur=i;document.querySelector('#lb img').src=GAL[i];document.querySelector('#lb .cap').textContent=(i+1)+' / '+GAL.length;document.getElementById('lb').classList.add('on');}
+function closeLb(){document.getElementById('lb').classList.remove('on');}
+function step(d){cur=(cur+d+GAL.length)%GAL.length;openLb(cur);}
+document.addEventListener('keydown',function(e){
+  if(!document.getElementById('lb').classList.contains('on'))return;
+  if(e.key==='Escape')closeLb();else if(e.key==='ArrowLeft')step(-1);else if(e.key==='ArrowRight')step(1);
+});
+</script>
+</body></html>
