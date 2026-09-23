@@ -114,3 +114,26 @@ $ C:\Users\yueling.liu\.workbuddy\binaries\PortableGit\versions\1.2.0\cmd\git.EX
 OK week 2026-09-17 -> D:\Workbuddy\xxr数据处理\巡查表\照片证据册\weeks\2026-09-17\index.html ( 1603529 bytes )
   周页下载入口: ✅ 已渲染
 [4/6] 红线校验（最新周 2026-09-17）...
+   ~~ 平台侧同图(不同URL，不阻断) a56474dfe6 ['深圳市南山区金铜路北侧_英伦名苑一期', '深圳市南山区粤海街道水厂路563号大涌水厂_大涌水厂宿舍楼']
+   ~~ 平台侧同图(不同URL，不阻断) f9b065ae65 ['深圳市南山区金铜路北侧_英伦名苑一期', '深圳市南山区粤海街道水厂路563号大涌水厂_大涌水厂宿舍楼']
+   ~~ 平台侧同图(不同URL，不阻断) 10854455c6 ['深圳市南山区金铜路北侧_英伦名苑一期', '深圳市南山区粤海街道水厂路563号大涌水厂_大涌水厂宿舍楼']
+   ~~ 平台侧同图(不同URL，不阻断) 89d20eccc5 ['深圳市南山区金铜路北侧_英伦名苑一期', '深圳市南山区粤海街道水厂路563号大涌水厂_大涌水厂宿舍楼']
+  过小(<1.5KB)派生图 0
+  VERDICT: PASS
+[4.5/6] 计数对账（快照 problem_count vs 本周 app_data）...
+快照 OK：230 行（生成于 2026-09-23 09:57:56）
+快照侧场所数 = 230 ；证据册侧场所数 = 230
+快照合计 = 605 ；证据册合计 = 605
+✅ 逐场所完全一致
+—— 元数据对账（场所类型 / 投放点数量）——
+✅ 场所类型 / 投放点数量与快照完全一致（230 家）
+  ✅ 计数对账通过（基准：D:/Workbuddy/xxr数据处理/photos_2026-09-17/_list_snapshot.json）
+[5/6] 提交并推送 main ...
+warning: in the working copy of '_redeploy_0923.log', LF will be replaced by CRLF the next time Git touches it
+[gitpush] → 1) 原样 SSH（remote=origin，host=github.com） ...
+[gitpush] ✅ 成功：1) 原样 SSH（remote=origin，host=github.com）
+  推送成功（三段式 SSH）
+[6/6] 自检公网可访问 ...
+  ✅ 公网已更新：tabs=3，最新周 2026-09-17 场所页入口=195
+SELFCHECK PASS
+完成。公开地址： https://yueling-buddy.github.io/xxr-inspection-album/
