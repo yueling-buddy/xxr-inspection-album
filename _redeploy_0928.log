@@ -1,2 +1,96 @@
 [前置] 本周 id=2026-09-23 周期=2026-09-23~2026-09-28
 [1/6] 按源同步证据册派生图（img 1280 / thumb 320）...
+源目录 : D:/Workbuddy/xxr数据处理/photos_2026-09-23
+证据册 : D:/Workbuddy/xxr数据处理/巡查表/照片证据册
+应存派生图 : 1348 个  (img 674 / thumb 674)
+本次处理   : 1348 个
+源图缺失 : 0   派生图缺失 : 1348
+孤儿文件 : 0 个（不被 _items_map 引用，但仍可按公网 URL 访问）
+------------------------------------------------------------
+开始按源重建 1348 个派生图 ...
+  ... 100/1348
+  ... 200/1348
+  ... 300/1348
+  ... 400/1348
+  ... 500/1348
+  ... 600/1348
+  ... 700/1348
+  ... 800/1348
+  ... 900/1348
+  ... 1000/1348
+  ... 1100/1348
+  ... 1200/1348
+  ... 1300/1348
+重建完成: ok=1348 fail=0
+------------------------------------------------------------
+收尾：剩余孤儿 0 个；过小(<1.5KB)派生图 0 个
+------------------------------------------------------------
+证据册红线校验：现场整体图跨场所唯一性 ...
+  参与校验 334 张 | 唯一 md5 333 | 跨场所重复组 1（同URL串图 0 / 平台侧同图 1）
+   ~~ 平台侧同图(不同URL，不阻断) 23301da326 ['深圳龙珠军苑_龙珠军苑', '深圳龙珠军苑_龙珠军苑']
+  过小(<1.5KB)派生图 0
+  VERDICT: PASS
+      清理孤儿文件...
+   ~~ 平台侧同图(不同URL，不阻断) 23301da326 ['深圳龙珠军苑_龙珠军苑', '深圳龙珠军苑_龙珠军苑']
+  过小(<1.5KB)派生图 0
+  VERDICT: PASS
+[2/6] 生成场所页（venue/）...
+生成场所页: 106 个 -> 巡查表\照片证据册\venue
+页脚周期: 2026-09-23 ~ 2026-09-28
+样例: v-龙华区观澜街道桂花社区贵湖塘新村_贵湖塘新村.html
+[3/6] roll_week：提升当周为独立周目录（滚动缓存）...
+$ C:\Users\yueling.liu\.workbuddy\binaries\PortableGit\versions\1.2.0\cmd\git.EXE count-objects -vH
+[1] 提升当周产物 -> weeks/2026-09-23/
+   旧产物已挪到回收区（0 项：无）→ D:\Workbuddy\xxr数据处理\巡查表\_week_trash\2026-09-23-20260928-113810
+   移动: app_data.json, venue_order.json, img, thumb, venue
+[2] 登记 weeks.json：当前 4 周，keep=10
+[3] 重建各周静态页 + 根标签页外壳 ...
+$ C:\Users\yueling.liu\.workbuddy\binaries\python\envs\default\Scripts\python.exe C:\Users\yueling.liu\.workbuddy\skills\sz-inspection-grab\scripts\gen_week_site.py 2026-09-23
+$ C:\Users\yueling.liu\.workbuddy\binaries\python\envs\default\Scripts\python.exe C:\Users\yueling.liu\.workbuddy\skills\sz-inspection-grab\scripts\gen_week_site.py 2026-09-17
+$ C:\Users\yueling.liu\.workbuddy\binaries\python\envs\default\Scripts\python.exe C:\Users\yueling.liu\.workbuddy\skills\sz-inspection-grab\scripts\gen_week_site.py 2026-09-10
+$ C:\Users\yueling.liu\.workbuddy\binaries\python\envs\default\Scripts\python.exe C:\Users\yueling.liu\.workbuddy\skills\sz-inspection-grab\scripts\gen_week_site.py 2026-09-03
+$ C:\Users\yueling.liu\.workbuddy\binaries\python\envs\default\Scripts\python.exe C:\Users\yueling.liu\.workbuddy\skills\sz-inspection-grab\scripts\gen_root.py
+[5] 提交 ...
+$ C:\Users\yueling.liu\.workbuddy\binaries\PortableGit\versions\1.2.0\cmd\git.EXE add -A
+$ C:\Users\yueling.liu\.workbuddy\binaries\PortableGit\versions\1.2.0\cmd\git.EXE commit -q -m roll: add 2026-09-23
+[6] 跳过 git gc（默认不做；本机沙箱内 gc 会摧毁 .git —— 见 2026-09-15 事故）
+    .git 过大时用「手动 squash 重建」控制体积，见 流程与注意事项.md §十三
+$ C:\Users\yueling.liu\.workbuddy\binaries\PortableGit\versions\1.2.0\cmd\git.EXE count-objects -vH
+============================================================
+完成。周目录：4 个（keep=10）
+新增 : 2026-09-23 (场所 106 / 照片 674)
+旧产物回收区: D:\Workbuddy\xxr数据处理\巡查表\_week_trash\2026-09-23-20260928-113810
+回收区清理: python roll_week.py --purge-trash   （沙箱内大目录需升级执行；留着不影响站点）
+.git 体积: 422.85 MiB -> 422.85 MiB
+公网根地址: https://yueling-buddy.github.io/xxr-inspection-album/
+      最新周 = 2026-09-23
+[3.5/6] 更新 Excel O列链接 -> /weeks/2026-09-23/venue/ ...
+  跳过 巡查表0911 - 副本_公网版.xlsx（场所页命中本周 0/169）
+  跳过 巡查表0911 - 副本_公网版_标准.xlsx（场所页命中本周 0/169）
+  跳过 巡查表0922 - 副本_公网版.xlsx（场所页命中本周 0/162）
+  跳过 巡查表0923 - 副本_公网版.xlsx（场所页命中本周 0/189）
+  跳过 巡查表915 - 副本_公网版.xlsx（场所页命中本周 0/155）
+  已写回
+完成。新基址: https://yueling-buddy.github.io/xxr-inspection-album
+[3.6/6] 发布本周巡查表 Excel（周页下载入口）...
+[挑选] 在 D:/Workbuddy/xxr数据处理/巡查表 下寻找属于 2026-09-23 的公网版…
+  巡查表0911 - 副本_公网版.xlsx                      场所页命中本周 0/169 (0%)
+  巡查表0911 - 副本_公网版_标准.xlsx                   场所页命中本周 0/169 (0%)
+  巡查表0922 - 副本_公网版.xlsx                      场所页命中本周 0/162 (0%)
+  巡查表0923 - 副本_公网版.xlsx                      场所页命中本周 0/189 (0%)
+  巡查表0928 - 副本_公网版.xlsx                      场所页命中本周 86/86 (100%)  ✅
+  巡查表915 - 副本_公网版.xlsx                       场所页命中本周 0/155 (0%)
+  选中 -> D:/Workbuddy/xxr数据处理/巡查表\巡查表0928 - 副本_公网版.xlsx
+  源表 sheet: ['巡查表0928表', '检查结果明细']
+  「检查结果明细」数据行 = 232
+  ✓ 无 =HYPERLINK() 公式残留
+  已发布 -> D:/Workbuddy/xxr数据处理/巡查表/照片证据册\weeks\2026-09-23\巡查表.xlsx (52804 bytes)
+OK week 2026-09-23 -> D:\Workbuddy\xxr数据处理\巡查表\照片证据册\weeks\2026-09-23\index.html ( 612862 bytes )
+  周页下载入口: ✅ 已渲染
+[4/6] 红线校验（最新周 2026-09-23）...
+------------------------------------------------------------
+证据册红线校验：现场整体图跨场所唯一性 ...
+  参与校验 334 张 | 唯一 md5 333 | 跨场所重复组 1（同URL串图 0 / 平台侧同图 1）
+   ~~ 平台侧同图(不同URL，不阻断) 23301da326 ['深圳龙珠军苑_龙珠军苑', '深圳龙珠军苑_龙珠军苑']
+  过小(<1.5KB)派生图 0
+  VERDICT: PASS
