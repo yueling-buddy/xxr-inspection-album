@@ -82,7 +82,7 @@ footer{color:var(--sub);font-size:12px;padding:0 22px 30px;max-width:1180px}
 </div>
 </main>
 <div id="lb"><span class="x" onclick="closeLb()">&times;</span><span class="pv" onclick="step(-1)">&#8249;</span><img alt=""><span class="cap"></span><span class="nx" onclick="step(1)">&#8250;</span></div>
-<footer>数据源：深圳市生活垃圾分类巡查平台（2026-09-29 ~ 2026-10-08）</footer>
+<footer>数据源：深圳市生活垃圾分类巡查平台（2026-09-29 ~ 2026-10-05）</footer>
 <script>GAL=["../img/%E6%B0%B4%E8%B4%9D%E4%BA%8C%E8%B7%AF55%E5%8F%B7_%E7%89%B9%E5%8A%9B%E5%A4%A7%E5%8E%A6%28%E4%B8%AD%E5%A4%A9%E6%A5%BC%29/__overall__1.jpg", "../img/%E6%B0%B4%E8%B4%9D%E4%BA%8C%E8%B7%AF55%E5%8F%B7_%E7%89%B9%E5%8A%9B%E5%A4%A7%E5%8E%A6%28%E4%B8%AD%E5%A4%A9%E6%A5%BC%29/1.6_-1_1.jpg", "../img/%E6%B0%B4%E8%B4%9D%E4%BA%8C%E8%B7%AF55%E5%8F%B7_%E7%89%B9%E5%8A%9B%E5%A4%A7%E5%8E%A6%28%E4%B8%AD%E5%A4%A9%E6%A5%BC%29/1.17_-2_1.jpg"];
 var cur=0;
 function openLb(i){cur=i;document.querySelector('#lb img').src=GAL[i];document.querySelector('#lb .cap').textContent=(i+1)+' / '+GAL.length;document.getElementById('lb').classList.add('on');}
