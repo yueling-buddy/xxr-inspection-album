@@ -29,6 +29,8 @@ header{flex-wrap:wrap}
 .fb.on small{opacity:.85}
 .vinfo{margin:0 18px 12px;padding:8px 12px;background:#f1f5f9;border:1px solid #e2e8f0;border-radius:8px;font-size:13px;color:#334155;font-weight:600}
 .vinfo:empty{display:none}
+.dupbadge{display:inline-block;margin-left:8px;padding:2px 9px;border-radius:999px;background:#fef3c7;border:1px solid #fcd34d;color:#92400e;font-size:12px;font-weight:600;vertical-align:middle;cursor:help}
+nav a[data-dup]:not([data-dup="0"]):not([data-dup="1"]) small::after{content:" ·重复工单";color:#b45309;font-weight:600}
 .btn{border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 12px;font-size:13px;cursor:pointer;text-decoration:none;color:var(--tx);display:inline-block}
 .btn.primary{background:var(--blue);color:#fff;border-color:var(--blue)}
 .btn.xls{background:#eff6ff;border-color:#bfdbfe;color:var(--blue);font-weight:600}
@@ -112,42 +114,42 @@ nav a .dtag{font-size:10.5px;padding:0 6px}
   <label class="btn" onclick="exportMarks()" title="把本页所有标注（保留/剔除 + 标签）下载为 JSON 备份文件">导出标注</label>
 </header>
 <div class="wrap">
-  <nav><a href="#v-深圳市宝安区新桥街道上城名邸_上城名邸" data-k="v-深圳市宝安区新桥街道上城名邸_上城名邸" data-cat="住宅区" data-day="2026-09-20">上城名邸<small><span class="dtag">09-20（周日）</span> · 7 个问题项 · 16 张</small></a>
-<a href="#v-深圳市宝安区沙井街道上埔路_上埔小区" data-k="v-深圳市宝安区沙井街道上埔路_上埔小区" data-cat="住宅区" data-day="2026-09-18">上埔小区<small><span class="dtag">09-18（周五）</span> · 6 个问题项 · 16 张</small></a>
-<a href="#v-宝安东埔小区_东埔小区" data-k="v-宝安东埔小区_东埔小区" data-cat="住宅区" data-day="2026-09-18">东埔小区<small><span class="dtag">09-18（周五）</span> · 7 个问题项 · 20 张</small></a>
-<a href="#v-南山区东方新地_东方新地" data-k="v-南山区东方新地_东方新地" data-cat="住宅区" data-day="2026-09-21">东方新地<small><span class="dtag">09-21（周一）</span> · 4 个问题项 · 6 张</small></a>
-<a href="#v-广东省深圳市宝安区西乡街道前进二路101号创建大厦_丰恒苑" data-k="v-广东省深圳市宝安区西乡街道前进二路101号创建大厦_丰恒苑" data-cat="住宅区" data-day="2026-09-18">丰恒苑<small><span class="dtag">09-18（周五）</span> · 5 个问题项 · 7 张</small></a>
-<a href="#v-龙华区观澜街道新澜社区仲光园_含福基花园_仲光园_含贵苑小区_新澜雅苑_" data-k="v-龙华区观澜街道新澜社区仲光园_含福基花园_仲光园_含贵苑小区_新澜雅苑_" data-cat="住宅区" data-day="2026-09-22">仲光园（含贵苑小区、新澜雅苑）<small><span class="dtag">09-22（周二）</span> · 4 个问题项 · 5 张</small></a>
-<a href="#v-龙华区观澜街道桂香社区企坪新村_企坪新村" data-k="v-龙华区观澜街道桂香社区企坪新村_企坪新村" data-cat="住宅区" data-day="2026-09-21">企坪新村<small><span class="dtag">09-21（周一）</span> · 5 个问题项 · 9 张</small></a>
-<a href="#v-深圳市宝安区沙井街道步涌社区大兴一路9号_北味村饭店" data-k="v-深圳市宝安区沙井街道步涌社区大兴一路9号_北味村饭店" data-cat="其他场所" data-day="2026-09-18">北味村饭店<small><span class="dtag">09-18（周五）</span> · 2 个问题项 · 6 张</small></a>
-<a href="#v-深圳市罗湖区凤凰街道华丽东村17栋_华丽东村17栋" data-k="v-深圳市罗湖区凤凰街道华丽东村17栋_华丽东村17栋" data-cat="住宅区" data-day="2026-09-20">华丽东村17栋<small><span class="dtag">09-20（周日）</span> · 5 个问题项 · 6 张</small></a>
-<a href="#v-广东省深圳市南山区西丽街道乌石头路12_23号松坪山社区单身公寓_华兹酒店" data-k="v-广东省深圳市南山区西丽街道乌石头路12_23号松坪山社区单身公寓_华兹酒店" data-cat="其他场所" data-day="2026-09-20">华兹酒店<small><span class="dtag">09-20（周日）</span> · 3 个问题项 · 4 张</small></a>
-<a href="#v-深南东路1122号_华裕花园" data-k="v-深南东路1122号_华裕花园" data-cat="住宅区" data-day="2026-09-20">华裕花园<small><span class="dtag">09-20（周日）</span> · 6 个问题项 · 10 张</small></a>
-<a href="#v-广东省深圳市龙岗区坂田街道台学花园台湾花园_大同街_台湾花园" data-k="v-广东省深圳市龙岗区坂田街道台学花园台湾花园_大同街_台湾花园" data-cat="住宅区" data-day="2026-09-21">台湾花园<small><span class="dtag">09-21（周一）</span> · 3 个问题项 · 4 张</small></a>
-<a href="#v-广东省深圳市龙岗区坪地街道吉坑世居_吉坑村" data-k="v-广东省深圳市龙岗区坪地街道吉坑世居_吉坑村" data-cat="住宅区" data-day="2026-09-20">吉坑村<small><span class="dtag">09-20（周日）</span> · 3 个问题项 · 4 张</small></a>
-<a href="#v-梅坳二路2号_城管基地二号大院" data-k="v-梅坳二路2号_城管基地二号大院" data-cat="住宅区" data-day="2026-09-17">城管基地二号大院<small><span class="dtag">09-17（周四）</span> · 7 个问题项 · 18 张</small></a>
-<a href="#v-龙华区观澜街道桂香社区大沙河新村_大沙河新村" data-k="v-龙华区观澜街道桂香社区大沙河新村_大沙河新村" data-cat="住宅区" data-day="2026-09-21">大沙河新村<small><span class="dtag">09-21（周一）</span> · 2 个问题项 · 5 张</small></a>
-<a href="#v-龙华区观澜街道桂香社区大沙河老村_大沙河老村" data-k="v-龙华区观澜街道桂香社区大沙河老村_大沙河老村" data-cat="住宅区" data-day="2026-09-21">大沙河老村<small><span class="dtag">09-21（周一）</span> · 2 个问题项 · 2 张</small></a>
-<a href="#v-深圳市罗湖区东晓路3038号_太白居" data-k="v-深圳市罗湖区东晓路3038号_太白居" data-cat="住宅区" data-day="2026-09-22">太白居<small><span class="dtag">09-22（周二）</span> · 6 个问题项 · 13 张</small></a>
-<a href="#v-广东省深圳市罗湖区清水河街道金景花园金湖大厦_市司法局第一强制隔离_戒毒所小区_" data-k="v-广东省深圳市罗湖区清水河街道金景花园金湖大厦_市司法局第一强制隔离_戒毒所小区_" data-cat="住宅区" data-day="2026-09-21">市司法局第一强制隔离（戒毒所小区）<small><span class="dtag">09-21（周一）</span> · 4 个问题项 · 4 张</small></a>
-<a href="#v-广东省深圳市罗湖区黄贝街道新芙楼_新芙楼" data-k="v-广东省深圳市罗湖区黄贝街道新芙楼_新芙楼" data-cat="住宅区" data-day="2026-09-17">新芙楼<small><span class="dtag">09-17（周四）</span> · 6 个问题项 · 7 张</small></a>
-<a href="#v-深圳市南山区南头街100号_旺海怡苑" data-k="v-深圳市南山区南头街100号_旺海怡苑" data-cat="住宅区" data-day="2026-09-21">旺海怡苑<small><span class="dtag">09-21（周一）</span> · 2 个问题项 · 2 张</small></a>
-<a href="#v-广东省深圳市盐田区沙头角街道田心东路田心东路_道路停车位_明园餐厅" data-k="v-广东省深圳市盐田区沙头角街道田心东路田心东路_道路停车位_明园餐厅" data-cat="其他场所" data-day="2026-09-22">明园餐厅<small><span class="dtag">09-22（周二）</span> · 2 个问题项 · 4 张</small></a>
-<a href="#v-南山区乌石头路与宝深路交叉口南100米_松坪山第五工业区生活区" data-k="v-南山区乌石头路与宝深路交叉口南100米_松坪山第五工业区生活区" data-cat="住宅区" data-day="2026-09-20">松坪山第五工业区生活区<small><span class="dtag">09-20（周日）</span> · 6 个问题项 · 18 张</small></a>
-<a href="#v-松坪村小区_松坪村一_二期" data-k="v-松坪村小区_松坪村一_二期" data-cat="住宅区" data-day="2026-09-20">松坪村一、二期<small><span class="dtag">09-20（周日）</span> · 10 个问题项 · 17 张</small></a>
-<a href="#v-深圳松坪村三期_松坪村三期" data-k="v-深圳松坪村三期_松坪村三期" data-cat="住宅区" data-day="2026-09-20">松坪村三期<small><span class="dtag">09-20（周日）</span> · 8 个问题项 · 19 张</small></a>
-<a href="#v-广东省深圳市龙华区观澜街道桂花第二市场_桂花第二市场小区" data-k="v-广东省深圳市龙华区观澜街道桂花第二市场_桂花第二市场小区" data-cat="住宅区" data-day="2026-09-21">桂花第二市场小区<small><span class="dtag">09-21（周一）</span> · 3 个问题项 · 3 张</small></a>
-<a href="#v-广东省深圳市罗湖区黄贝街道黄贝岭华侨新村深纺黄贝住宅小区_深大电话公司黄贝岭宿舍" data-k="v-广东省深圳市罗湖区黄贝街道黄贝岭华侨新村深纺黄贝住宅小区_深大电话公司黄贝岭宿舍" data-cat="住宅区" data-day="2026-09-20">深大电话公司黄贝岭宿舍<small><span class="dtag">09-20（周日）</span> · 6 个问题项 · 8 张</small></a>
-<a href="#v-深圳市罗湖区罗沙路5071号特检站_特检大院" data-k="v-深圳市罗湖区罗沙路5071号特检站_特检大院" data-cat="住宅区" data-day="2026-09-17">特检大院<small><span class="dtag">09-17（周四）</span> · 3 个问题项 · 3 张</small></a>
-<a href="#v-王母围_王母围" data-k="v-王母围_王母围" data-cat="住宅区" data-day="2026-09-18">王母围<small><span class="dtag">09-18（周五）</span> · 1 个问题项 · 1 张</small></a>
-<a href="#v-沙头角田心一街_环卫楼周边四个小区" data-k="v-沙头角田心一街_环卫楼周边四个小区" data-cat="住宅区" data-day="2026-09-22">环卫楼周边四个小区<small><span class="dtag">09-22（周二）</span> · 2 个问题项 · 2 张</small></a>
-<a href="#v-福田区皇岗村_皇岗村" data-k="v-福田区皇岗村_皇岗村" data-cat="住宅区" data-day="2026-09-22">皇岗村<small><span class="dtag">09-22（周二）</span> · 7 个问题项 · 21 张</small></a>
-<a href="#v-南山区朗丰路9号_科苑新区" data-k="v-南山区朗丰路9号_科苑新区" data-cat="住宅区" data-day="2026-09-20">科苑新区<small><span class="dtag">09-20（周日）</span> · 7 个问题项 · 15 张</small></a>
-<a href="#v-广东省深圳市龙岗区坪地街道老香屋_老香村" data-k="v-广东省深圳市龙岗区坪地街道老香屋_老香村" data-cat="住宅区" data-day="2026-09-20">老香村<small><span class="dtag">09-20（周日）</span> · 4 个问题项 · 5 张</small></a>
-<a href="#v-广东省深圳市罗湖区黄贝街道深圳冶金大厦_设计院大厦" data-k="v-广东省深圳市罗湖区黄贝街道深圳冶金大厦_设计院大厦" data-cat="住宅区" data-day="2026-09-20">设计院大厦<small><span class="dtag">09-20（周日）</span> · 7 个问题项 · 12 张</small></a>
-<a href="#v-福田区农园路15号_香榭茗园" data-k="v-福田区农园路15号_香榭茗园" data-cat="住宅区" data-day="2026-09-21">香榭茗园<small><span class="dtag">09-21（周一）</span> · 4 个问题项 · 5 张</small></a>
-<a href="#v-深南东路1078号_黄贝岭华侨新村" data-k="v-深南东路1078号_黄贝岭华侨新村" data-cat="住宅区" data-day="2026-09-20">黄贝岭华侨新村<small><span class="dtag">09-20（周日）</span> · 3 个问题项 · 4 张</small></a>
-<a href="#v-深圳市龙岗区坂田街道坂田社区黄金山村_黄金山村" data-k="v-深圳市龙岗区坂田街道坂田社区黄金山村_黄金山村" data-cat="住宅区" data-day="2026-09-21">黄金山村<small><span class="dtag">09-21（周一）</span> · 2 个问题项 · 6 张</small></a></nav>
+  <nav><a href="#v-深圳市宝安区新桥街道上城名邸_上城名邸" data-k="v-深圳市宝安区新桥街道上城名邸_上城名邸" data-cat="住宅区" data-day="2026-09-20" data-dup="0">上城名邸<small><span class="dtag">09-20（周日）</span> · 7 个问题项 · 16 张</small></a>
+<a href="#v-深圳市宝安区沙井街道上埔路_上埔小区" data-k="v-深圳市宝安区沙井街道上埔路_上埔小区" data-cat="住宅区" data-day="2026-09-18" data-dup="0">上埔小区<small><span class="dtag">09-18（周五）</span> · 6 个问题项 · 16 张</small></a>
+<a href="#v-宝安东埔小区_东埔小区" data-k="v-宝安东埔小区_东埔小区" data-cat="住宅区" data-day="2026-09-18" data-dup="0">东埔小区<small><span class="dtag">09-18（周五）</span> · 7 个问题项 · 20 张</small></a>
+<a href="#v-南山区东方新地_东方新地" data-k="v-南山区东方新地_东方新地" data-cat="住宅区" data-day="2026-09-21" data-dup="0">东方新地<small><span class="dtag">09-21（周一）</span> · 4 个问题项 · 6 张</small></a>
+<a href="#v-广东省深圳市宝安区西乡街道前进二路101号创建大厦_丰恒苑" data-k="v-广东省深圳市宝安区西乡街道前进二路101号创建大厦_丰恒苑" data-cat="住宅区" data-day="2026-09-18" data-dup="0">丰恒苑<small><span class="dtag">09-18（周五）</span> · 5 个问题项 · 7 张</small></a>
+<a href="#v-龙华区观澜街道新澜社区仲光园_含福基花园_仲光园_含贵苑小区_新澜雅苑_" data-k="v-龙华区观澜街道新澜社区仲光园_含福基花园_仲光园_含贵苑小区_新澜雅苑_" data-cat="住宅区" data-day="2026-09-22" data-dup="0">仲光园（含贵苑小区、新澜雅苑）<small><span class="dtag">09-22（周二）</span> · 4 个问题项 · 5 张</small></a>
+<a href="#v-龙华区观澜街道桂香社区企坪新村_企坪新村" data-k="v-龙华区观澜街道桂香社区企坪新村_企坪新村" data-cat="住宅区" data-day="2026-09-21" data-dup="0">企坪新村<small><span class="dtag">09-21（周一）</span> · 5 个问题项 · 9 张</small></a>
+<a href="#v-深圳市宝安区沙井街道步涌社区大兴一路9号_北味村饭店" data-k="v-深圳市宝安区沙井街道步涌社区大兴一路9号_北味村饭店" data-cat="其他场所" data-day="2026-09-18" data-dup="0">北味村饭店<small><span class="dtag">09-18（周五）</span> · 2 个问题项 · 6 张</small></a>
+<a href="#v-深圳市罗湖区凤凰街道华丽东村17栋_华丽东村17栋" data-k="v-深圳市罗湖区凤凰街道华丽东村17栋_华丽东村17栋" data-cat="住宅区" data-day="2026-09-20" data-dup="0">华丽东村17栋<small><span class="dtag">09-20（周日）</span> · 5 个问题项 · 6 张</small></a>
+<a href="#v-广东省深圳市南山区西丽街道乌石头路12_23号松坪山社区单身公寓_华兹酒店" data-k="v-广东省深圳市南山区西丽街道乌石头路12_23号松坪山社区单身公寓_华兹酒店" data-cat="其他场所" data-day="2026-09-20" data-dup="0">华兹酒店<small><span class="dtag">09-20（周日）</span> · 3 个问题项 · 4 张</small></a>
+<a href="#v-深南东路1122号_华裕花园" data-k="v-深南东路1122号_华裕花园" data-cat="住宅区" data-day="2026-09-20" data-dup="0">华裕花园<small><span class="dtag">09-20（周日）</span> · 6 个问题项 · 10 张</small></a>
+<a href="#v-广东省深圳市龙岗区坂田街道台学花园台湾花园_大同街_台湾花园" data-k="v-广东省深圳市龙岗区坂田街道台学花园台湾花园_大同街_台湾花园" data-cat="住宅区" data-day="2026-09-21" data-dup="0">台湾花园<small><span class="dtag">09-21（周一）</span> · 3 个问题项 · 4 张</small></a>
+<a href="#v-广东省深圳市龙岗区坪地街道吉坑世居_吉坑村" data-k="v-广东省深圳市龙岗区坪地街道吉坑世居_吉坑村" data-cat="住宅区" data-day="2026-09-20" data-dup="0">吉坑村<small><span class="dtag">09-20（周日）</span> · 3 个问题项 · 4 张</small></a>
+<a href="#v-梅坳二路2号_城管基地二号大院" data-k="v-梅坳二路2号_城管基地二号大院" data-cat="住宅区" data-day="2026-09-17" data-dup="0">城管基地二号大院<small><span class="dtag">09-17（周四）</span> · 7 个问题项 · 18 张</small></a>
+<a href="#v-龙华区观澜街道桂香社区大沙河新村_大沙河新村" data-k="v-龙华区观澜街道桂香社区大沙河新村_大沙河新村" data-cat="住宅区" data-day="2026-09-21" data-dup="0">大沙河新村<small><span class="dtag">09-21（周一）</span> · 2 个问题项 · 5 张</small></a>
+<a href="#v-龙华区观澜街道桂香社区大沙河老村_大沙河老村" data-k="v-龙华区观澜街道桂香社区大沙河老村_大沙河老村" data-cat="住宅区" data-day="2026-09-21" data-dup="0">大沙河老村<small><span class="dtag">09-21（周一）</span> · 2 个问题项 · 2 张</small></a>
+<a href="#v-深圳市罗湖区东晓路3038号_太白居" data-k="v-深圳市罗湖区东晓路3038号_太白居" data-cat="住宅区" data-day="2026-09-22" data-dup="0">太白居<small><span class="dtag">09-22（周二）</span> · 6 个问题项 · 13 张</small></a>
+<a href="#v-广东省深圳市罗湖区清水河街道金景花园金湖大厦_市司法局第一强制隔离_戒毒所小区_" data-k="v-广东省深圳市罗湖区清水河街道金景花园金湖大厦_市司法局第一强制隔离_戒毒所小区_" data-cat="住宅区" data-day="2026-09-21" data-dup="0">市司法局第一强制隔离（戒毒所小区）<small><span class="dtag">09-21（周一）</span> · 4 个问题项 · 4 张</small></a>
+<a href="#v-广东省深圳市罗湖区黄贝街道新芙楼_新芙楼" data-k="v-广东省深圳市罗湖区黄贝街道新芙楼_新芙楼" data-cat="住宅区" data-day="2026-09-17" data-dup="0">新芙楼<small><span class="dtag">09-17（周四）</span> · 6 个问题项 · 7 张</small></a>
+<a href="#v-深圳市南山区南头街100号_旺海怡苑" data-k="v-深圳市南山区南头街100号_旺海怡苑" data-cat="住宅区" data-day="2026-09-21" data-dup="0">旺海怡苑<small><span class="dtag">09-21（周一）</span> · 2 个问题项 · 2 张</small></a>
+<a href="#v-广东省深圳市盐田区沙头角街道田心东路田心东路_道路停车位_明园餐厅" data-k="v-广东省深圳市盐田区沙头角街道田心东路田心东路_道路停车位_明园餐厅" data-cat="其他场所" data-day="2026-09-22" data-dup="0">明园餐厅<small><span class="dtag">09-22（周二）</span> · 2 个问题项 · 4 张</small></a>
+<a href="#v-南山区乌石头路与宝深路交叉口南100米_松坪山第五工业区生活区" data-k="v-南山区乌石头路与宝深路交叉口南100米_松坪山第五工业区生活区" data-cat="住宅区" data-day="2026-09-20" data-dup="0">松坪山第五工业区生活区<small><span class="dtag">09-20（周日）</span> · 6 个问题项 · 18 张</small></a>
+<a href="#v-松坪村小区_松坪村一_二期" data-k="v-松坪村小区_松坪村一_二期" data-cat="住宅区" data-day="2026-09-20" data-dup="0">松坪村一、二期<small><span class="dtag">09-20（周日）</span> · 10 个问题项 · 17 张</small></a>
+<a href="#v-深圳松坪村三期_松坪村三期" data-k="v-深圳松坪村三期_松坪村三期" data-cat="住宅区" data-day="2026-09-20" data-dup="0">松坪村三期<small><span class="dtag">09-20（周日）</span> · 8 个问题项 · 19 张</small></a>
+<a href="#v-广东省深圳市龙华区观澜街道桂花第二市场_桂花第二市场小区" data-k="v-广东省深圳市龙华区观澜街道桂花第二市场_桂花第二市场小区" data-cat="住宅区" data-day="2026-09-21" data-dup="0">桂花第二市场小区<small><span class="dtag">09-21（周一）</span> · 3 个问题项 · 3 张</small></a>
+<a href="#v-广东省深圳市罗湖区黄贝街道黄贝岭华侨新村深纺黄贝住宅小区_深大电话公司黄贝岭宿舍" data-k="v-广东省深圳市罗湖区黄贝街道黄贝岭华侨新村深纺黄贝住宅小区_深大电话公司黄贝岭宿舍" data-cat="住宅区" data-day="2026-09-20" data-dup="0">深大电话公司黄贝岭宿舍<small><span class="dtag">09-20（周日）</span> · 6 个问题项 · 8 张</small></a>
+<a href="#v-深圳市罗湖区罗沙路5071号特检站_特检大院" data-k="v-深圳市罗湖区罗沙路5071号特检站_特检大院" data-cat="住宅区" data-day="2026-09-17" data-dup="0">特检大院<small><span class="dtag">09-17（周四）</span> · 3 个问题项 · 3 张</small></a>
+<a href="#v-王母围_王母围" data-k="v-王母围_王母围" data-cat="住宅区" data-day="2026-09-18" data-dup="0">王母围<small><span class="dtag">09-18（周五）</span> · 1 个问题项 · 1 张</small></a>
+<a href="#v-沙头角田心一街_环卫楼周边四个小区" data-k="v-沙头角田心一街_环卫楼周边四个小区" data-cat="住宅区" data-day="2026-09-22" data-dup="0">环卫楼周边四个小区<small><span class="dtag">09-22（周二）</span> · 2 个问题项 · 2 张</small></a>
+<a href="#v-福田区皇岗村_皇岗村" data-k="v-福田区皇岗村_皇岗村" data-cat="住宅区" data-day="2026-09-22" data-dup="0">皇岗村<small><span class="dtag">09-22（周二）</span> · 7 个问题项 · 21 张</small></a>
+<a href="#v-南山区朗丰路9号_科苑新区" data-k="v-南山区朗丰路9号_科苑新区" data-cat="住宅区" data-day="2026-09-20" data-dup="0">科苑新区<small><span class="dtag">09-20（周日）</span> · 7 个问题项 · 15 张</small></a>
+<a href="#v-广东省深圳市龙岗区坪地街道老香屋_老香村" data-k="v-广东省深圳市龙岗区坪地街道老香屋_老香村" data-cat="住宅区" data-day="2026-09-20" data-dup="0">老香村<small><span class="dtag">09-20（周日）</span> · 4 个问题项 · 5 张</small></a>
+<a href="#v-广东省深圳市罗湖区黄贝街道深圳冶金大厦_设计院大厦" data-k="v-广东省深圳市罗湖区黄贝街道深圳冶金大厦_设计院大厦" data-cat="住宅区" data-day="2026-09-20" data-dup="0">设计院大厦<small><span class="dtag">09-20（周日）</span> · 7 个问题项 · 12 张</small></a>
+<a href="#v-福田区农园路15号_香榭茗园" data-k="v-福田区农园路15号_香榭茗园" data-cat="住宅区" data-day="2026-09-21" data-dup="0">香榭茗园<small><span class="dtag">09-21（周一）</span> · 4 个问题项 · 5 张</small></a>
+<a href="#v-深南东路1078号_黄贝岭华侨新村" data-k="v-深南东路1078号_黄贝岭华侨新村" data-cat="住宅区" data-day="2026-09-20" data-dup="0">黄贝岭华侨新村<small><span class="dtag">09-20（周日）</span> · 3 个问题项 · 4 张</small></a>
+<a href="#v-深圳市龙岗区坂田街道坂田社区黄金山村_黄金山村" data-k="v-深圳市龙岗区坂田街道坂田社区黄金山村_黄金山村" data-cat="住宅区" data-day="2026-09-21" data-dup="0">黄金山村<small><span class="dtag">09-21（周一）</span> · 2 个问题项 · 6 张</small></a></nav>
   <main><section class="venue" id="v-深圳市宝安区新桥街道上城名邸_上城名邸" data-cat="住宅区" data-day="2026-09-20">
 <h2>上城名邸<span><span class="dtag">09-20（周日）</span> · 深圳市宝安区新桥街道上城名邸 · 问题项 7 · 照片 16</span><a class="vlink" href="venue/v-深圳市宝安区新桥街道上城名邸_上城名邸.html" target="_blank" rel="noopener" title="打开该场所的独立证据页（可发给他人/填进巡查表）">证据页 ↗</a></h2>
 <div class="overall">
